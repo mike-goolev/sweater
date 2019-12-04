@@ -1,6 +1,12 @@
 <html>
-
 <body>
-    </div>{{some}}</div>
+    </div>List of messages</div>
+    {{#messages}}
+        <div>
+            <b>{{id}}</b>
+            <span>{{text}}</span>
+            <i>{{tag}}</i>
+        </div>
+    {{/messages}}
 </body>
 </html>
