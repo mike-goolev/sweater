@@ -7,7 +7,12 @@
             <button type="submit">Add</button>
         </form>
     </div>
-    </div>List of messages</div>
+    </div>Filter</div>
+    <form method="post" action="filter">
+        <input type="text" name="filter">
+        <button type="submit">Search</button>
+    </form>
+    </div>List of messages:</div>
     {{#messages}}
         <div>
             <b>{{id}}</b>
