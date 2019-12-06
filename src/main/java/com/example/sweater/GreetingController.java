@@ -32,7 +32,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String tag,  Map<String, Object> model) {
         //saved messages
         Message message = new Message(text, tag);
