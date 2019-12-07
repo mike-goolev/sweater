@@ -4,3 +4,5 @@
 *.jar
 target
 .idea
+# Datasource local storage ignored files
+/dataSources/
