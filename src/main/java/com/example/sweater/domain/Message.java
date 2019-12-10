@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@SuppressWarnings("ALL")
 @Entity
 public class Message {
     @Id
@@ -13,6 +14,17 @@ public class Message {
 
     private String text;
     private String tag;
+
+    @SuppressWarnings("JpaAttributeTypeInspection")
+    private User author;
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 
     //constructor without parameters
     public Message() {
