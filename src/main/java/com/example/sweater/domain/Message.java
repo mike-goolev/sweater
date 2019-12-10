@@ -1,9 +1,6 @@
 package com.example.sweater.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @SuppressWarnings("ALL")
 @Entity
@@ -15,16 +12,9 @@ public class Message {
     private String text;
     private String tag;
 
-    @SuppressWarnings("JpaAttributeTypeInspection")
+    @ManyToOne(fetch = FetchType.EAGER) // one user matches many messages
+    @JoinColumn(name = "user_id")
     private User author;
-
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
 
     //constructor without parameters
     public Message() {
@@ -35,6 +25,19 @@ public class Message {
         this.author = user;
         this.text = text;
         this.tag = tag;
+    }
+
+    // checking if author of a message exists
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>"; // boolean statement ? true result : false result;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public String getText() {
