@@ -5,6 +5,7 @@ import javax.persistence.*;
 @SuppressWarnings("ALL")
 @Entity
 public class Message {
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
@@ -13,7 +14,7 @@ public class Message {
     private String tag;
 
     @ManyToOne(fetch = FetchType.EAGER) // one user matches many messages
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") // author will be stored in column "user_id"
     private User author;
 
     //constructor without parameters
@@ -30,6 +31,14 @@ public class Message {
     // checking if author of a message exists
     public String getAuthorName() {
         return author != null ? author.getUsername() : "<none>"; // boolean statement ? true result : false result;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public User getAuthor() {
