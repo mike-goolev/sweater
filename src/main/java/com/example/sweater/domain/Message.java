@@ -64,4 +64,14 @@ public class Message {
     public void setTag(String tag) {
         this.tag = tag;
     }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    private String filename;
 }
