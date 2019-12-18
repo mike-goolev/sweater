@@ -1,9 +1,9 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
-User Editor
+    User editor
 
-    <form acttion="/user" method="post">
+    <form action="/user" method="post">
         <input type="text" name="username" value="${user.username}">
         <#list roles as role>
             <div>
@@ -13,6 +13,5 @@ User Editor
         <input type="hidden" value="${user.id}" name="userId">
         <input type="hidden" value="${_csrf.token}" name="_csrf">
         <button type="submit">Save</button>
-
     </form>
 </@c.page>
