@@ -4,5 +4,7 @@
 *.jar
 target
 .idea
+.gitattributes
+uploads
 # Datasource local storage ignored files
 /dataSources/
