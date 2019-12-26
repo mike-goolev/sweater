@@ -1,11 +1,14 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
-    <div>Filter</div>
-    <form method="get" action="/main">
-        <input type="text" name="filter" value="${filter!}">
-        <button type="submit">Search</button>
-    </form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <form method="get" action="/main">
+                <input type="text" name="filter" value="${filter!}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
 
     <div>
         <form method="post" action="/main" enctype="multipart/form-data">
