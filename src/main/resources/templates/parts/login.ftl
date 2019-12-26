@@ -15,13 +15,13 @@
         </div>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <#if !isRegistererForm><a href="/registration">Create new user</a></#if>
-        <button type="submit" class="btn btn-primary"><#if isRegistererForm>Create<#else>Sign In</#if></button>
+        <button class="btn btn-primary" type="submit"><#if isRegistererForm>Create<#else>Sign In</#if></button>
     </form>
 </#macro>
 
 <#macro logout>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <input type="submit" value="Sign Out"/>
+        <button class="btn btn-primary" type="submit">Sign Out</button>
     </form>
 </#macro>
