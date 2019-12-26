@@ -1,9 +1,12 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
-    <div>
-        <span><a href="/user">User list</a></span>
-    </div>
+    <div>Filter</div>
+    <form method="get" action="/main">
+        <input type="text" name="filter" value="${filter!}">
+        <button type="submit">Search</button>
+    </form>
+
     <div>
         <form method="post" action="/main" enctype="multipart/form-data">
             <input type="text" name="text" placeholder="Type message">
@@ -13,12 +16,7 @@
             <button type="submit">Add</button>
         </form>
     </div>
-    <div>Filter</div>
-    <form method="get" action="/main">
-        <input type="text" name="filter" value="${filter!}">
-        <button type="submit">Search</button>
-    </form>
-    <div>List of messages:</div>
+
     <#list messages as message>
         <div>
             <b>${message.id}</b>
