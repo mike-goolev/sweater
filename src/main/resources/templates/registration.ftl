@@ -4,5 +4,5 @@
 <@c.page>
 Create new user
 ${message!}
-<@l.signup "/registration" />
+<@l.login "/registration" />
 </@c.page>
