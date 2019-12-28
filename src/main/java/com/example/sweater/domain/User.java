@@ -103,10 +103,10 @@ public class User implements UserDetails {
     }
 
     public String getActivateCode() {
-        return activateCode;
+        return activationCode;
     }
 
     public void setActivateCode(String activateCode) {
-        this.activateCode = activateCode;
+        this.activationCode = activateCode;
     }
 }
