@@ -35,15 +35,15 @@ public class UserService implements UserDetailsService {
 
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
-        user.setActivateCode(UUID.randomUUID().toString());
+        user.setActivationCode(UUID.randomUUID().toString());
 
         userRepo.save(user);
 
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
-                    "Hello, %s \n" + "Welcome to Sweater. To activate your account follow the link: http://localhost:8080/activate/%s",
+                    "Hello, %s! \n" + "Welcome to Sweater. To activate your account follow the link: http://localhost:8080/activate/%s",
                     user.getUsername(),
-                    user.getActivateCode()
+                    user.getActivationCode()
             );
 
             mailSender.send(user.getEmail(), "Activation code", message);

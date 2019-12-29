@@ -102,11 +102,11 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public String getActivateCode() {
+    public String getActivationCode() {
         return activationCode;
     }
 
-    public void setActivateCode(String activateCode) {
+    public void setActivationCode(String activateCode) {
         this.activationCode = activateCode;
     }
 }
