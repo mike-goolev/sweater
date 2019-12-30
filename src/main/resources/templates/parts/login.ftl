@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <#if !isRegistererForm>
+        <#if isRegistererForm>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"> Email: </label>
             <div class="col-sm-6">
