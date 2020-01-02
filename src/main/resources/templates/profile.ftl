@@ -19,6 +19,6 @@
             </div>
 
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button class="btn btn-primary" type="submit"><#if isRegistererForm>Create<#else>Save</#if></button>
+        <button class="btn btn-primary" type="submit">Save</button>
     </form>
 </@c.page>
