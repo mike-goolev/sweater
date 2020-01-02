@@ -39,6 +39,13 @@ public class UserService implements UserDetailsService {
 
         userRepo.save(user);
 
+        sendMessage(user);
+
+        return true;
+    }
+
+    //send activation code to the user by email
+    private void sendMessage(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" + "Welcome to Sweater. To activate your account follow the link: http://localhost:8080/activate/%s",
@@ -48,8 +55,6 @@ public class UserService implements UserDetailsService {
 
             mailSender.send(user.getEmail(), "Activation code", message);
         }
-
-        return true;
     }
 
     public boolean activateUser(String code) {
@@ -84,5 +89,37 @@ public class UserService implements UserDetailsService {
         }
 
         userRepo.save(user);
+    }
+
+    public void updateProfile(User user, String password, String email) {
+        String userEmail = user.getEmail();
+
+        boolean isEmailChanged = (email !=null && !email.equals(userEmail)) ||
+                userEmail != null && !userEmail.equals(email);
+
+        if (isEmailChanged) {
+            user.setEmail(email);
+            }
+
+            //updating email
+            if (isEmailChanged) {
+                user.setEmail(email);
+
+                //generate new activation code
+                if (!StringUtils.isEmpty(email)) {
+                    user.setActivationCode(UUID.randomUUID().toString());
+            }
+        }
+
+        //checking if user set up new password
+        if (StringUtils.isEmpty(password)) {
+            user.setPassword(password);
+        }
+
+        userRepo.save(user);
+
+        if (isEmailChanged) {
+            sendMessage(user);
+        }
     }
 }
