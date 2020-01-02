@@ -65,7 +65,9 @@ public class UserService implements UserDetailsService {
         }
 
         user.setActivationCode(null);
+
         userRepo.save(user);
+
         return true;
     }
 
@@ -95,15 +97,10 @@ public class UserService implements UserDetailsService {
         String userEmail = user.getEmail();
 
         boolean isEmailChanged = (email !=null && !email.equals(userEmail)) ||
-                userEmail != null && !userEmail.equals(email);
+                (userEmail != null && !userEmail.equals(email));
 
         if (isEmailChanged) {
             user.setEmail(email);
-            }
-
-            //updating email
-            if (isEmailChanged) {
-                user.setEmail(email);
 
                 //generate new activation code
                 if (!StringUtils.isEmpty(email)) {
