@@ -67,6 +67,7 @@ public class MainController {
         if (bindingResult.hasErrors()) {
             Map<String, String> errorMap = ControllerUtills.getErrors(bindingResult);
             model.mergeAttributes(errorMap);
+            model.addAttribute("message", message);
         } else {
             if (file != null && !file.getOriginalFilename().isEmpty()) {
                 File uploadDir = new File(uploadPath);
