@@ -14,7 +14,7 @@ public class Message {
     private Long id;
 
     @NotBlank(message = "Please enter the message")
-    @Length(max = 2018, message = "Message is too long")
+    @Length(max = 2048, message = "Message is too long")
     private String text;
     private String tag;
 
