@@ -15,7 +15,7 @@
         Add New Message
     </a>
 
-    <div class="collapse" id="collapseExample">
+    <div class="collapse <#if message??>show</#if>" id="collapseExample">
         <div class="form-group mt-3">
             <form method="post" action="/main" enctype="multipart/form-data">
                 <div class="form-group">
