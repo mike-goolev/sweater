@@ -1,6 +1,9 @@
 package com.example.sweater.domain;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @SuppressWarnings("ALL")
 @Entity
@@ -10,6 +13,8 @@ public class Message {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Please enter the message")
+    @Length(max = 2018, message = "Message is too long")
     private String text;
     private String tag;
 
