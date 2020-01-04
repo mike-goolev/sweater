@@ -14,8 +14,9 @@ public class Message {
     private Long id;
 
     @NotBlank(message = "Please enter the message")
-    @Length(max = 2048, message = "Message is too long")
+    @Length(max = 2048, message = "Message is too long (2048 char max)")
     private String text;
+    @Length(max = 255, message = "Tag is too long (255 char max)")
     private String tag;
 
     @ManyToOne(fetch = FetchType.EAGER) // one user matches many messages
