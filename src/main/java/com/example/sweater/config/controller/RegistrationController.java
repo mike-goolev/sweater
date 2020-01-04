@@ -5,11 +5,13 @@ import com.example.sweater.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.jws.WebParam;
+import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
@@ -23,9 +25,22 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model) {
+    public String addUser(@Valid User user, BindingResult bindingResult, Model model) {
+        //validate password and password2
+        if (user.getPassword() != null && !user.getPassword().equals(user.getPassword2())) {
+            model.addAttribute("message", "Confirmation password do not match");
+        }
+
+        if (bindingResult.hasErrors()) {
+            Map<String, String> errors = ControllerUtills.getErrors(bindingResult);
+
+            model.mergeAttributes(errors);
+
+            return "registration";
+        }
+
         if (!userService.addUser(user)) {
-            model.put("message", "User already exists!");
+            model.addAttribute("usernameError", "User already exists!");
             return "registration";
         }
         return "redirect:/login";
