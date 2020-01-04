@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.jws.WebParam;
 import javax.validation.Valid;
 import java.util.Map;
 
@@ -28,7 +27,7 @@ public class RegistrationController {
     public String addUser(@Valid User user, BindingResult bindingResult, Model model) {
         //validate password and password2
         if (user.getPassword() != null && !user.getPassword().equals(user.getPassword2())) {
-            model.addAttribute("message", "Confirmation password do not match");
+            model.addAttribute("passwordError", "Confirmation password do not match");
         }
 
         if (bindingResult.hasErrors()) {

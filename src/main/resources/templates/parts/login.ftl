@@ -3,7 +3,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">User Name:</label>
             <div class="col-sm-6">
-                <input type="text" name="username"
+                <input type="text" name="username" value="<#if user??>${user.username}</#if>"
                        class="form-control ${(usernameError??)?string('is-invalid', '')}"
                        placeholder="User Name"/>
                 <#if usernameError??>
@@ -46,7 +46,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Email: </label>
                 <div class="col-sm-6">
-                    <input type="email" name="email"
+                    <input type="email" name="email" value="<#if user??>${user.email}</#if>"
                            class="form-control ${(emailError??)?string('is-invalid', '')}"
                            placeholder="Email"/>
                     <#if emailError??>
