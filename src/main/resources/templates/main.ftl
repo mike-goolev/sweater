@@ -4,7 +4,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <form method="get" action="/main" class="form-inline">
-                <input type="text" name="filter" class="form-control" value="${filter!}" placeholder="Search by tag">
+                <input class="form-control" name="filter" placeholder="Search by tag" type="text" value="${filter!}">
                 <button type="submit" class="btn btn-primary ml-2">Search</button>
             </form>
         </div>
@@ -19,8 +19,8 @@
         <div class="form-group mt-3">
             <form method="post" action="/main" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
-                           value="<#if message??>${message.text}</#if>" name="text" placeholder="Type message">
+                    <input class="form-control ${(textError??)?string('is-invalid', '')}" name="text"
+                           placeholder="Type message" type="text" value="<#if message??>${message.text}</#if>">
                     <#if textError??>
                     <div class="invalid-feedback">
                         ${textError}
@@ -48,7 +48,7 @@
     <#list messages as message>
         <div class="card my-3" style="width: 18rem;">
             <#if message.filename??>
-                <img src="/img/${message.filename}" class="card-img-top">
+                <img class="card-img-top" src="/img/${message.filename}">
             </#if>
             <div class="m-2">
                 <span>${message.text}</span>
