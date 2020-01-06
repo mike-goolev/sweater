@@ -21,7 +21,7 @@
                 <a class="nav-link" href="/user">User list</a>
             </li>
             </#if>
-            <#if user??>
+            <#if user??&&name!="unknown">
             <li class="nav-item">
                 <a class="nav-link" href="/user/profile">Profile</a>
             </li>

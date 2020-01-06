@@ -120,7 +120,7 @@ public class UserService implements UserDetailsService {
 
         //checking if user set up new password
         if (StringUtils.isEmpty(password)) {
-            user.setPassword(password);
+            user.setPassword(passwordEncoder.encode(password));
         }
 
         userRepo.save(user);
