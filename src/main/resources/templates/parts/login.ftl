@@ -56,10 +56,10 @@
                     </#if>
                 </div>
             </div>
-            <div>
+            <div class="col-sm-6">
                 <div class="g-recaptcha" data-sitekey="6Lcu-c0UAAAAAB59kSAiKZUoE5PbK0px7QTusqzg"></div>
                 <#if captchaError??>
-                    <div class="alert alert-danger " role="alert">
+                    <div class="alert alert-danger" role="alert">
                         ${captchaError}
                     </div>
                 </#if>
