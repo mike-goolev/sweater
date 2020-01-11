@@ -60,11 +60,12 @@ public class RegistrationController {
         }
 
         //validate password and password2
-        if (user.getPassword() != null && !user.getPassword().equals(passwordConfirm)) {
+        boolean diffPasswords = !user.getPassword().equals(passwordConfirm);
+        if ((user.getPassword() != null && diffPasswords)) {
             model.addAttribute("passwordError", "Confirmation password do not match");
         }
 
-        if (isConfirmEmpty || bindingResult.hasErrors() || !response.isSuccess()) {
+        if (isConfirmEmpty || diffPasswords || bindingResult.hasErrors() || !response.isSuccess()) {
             Map<String, String> errors = ControllerUtills.getErrors(bindingResult);
 
             model.mergeAttributes(errors);
