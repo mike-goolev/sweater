@@ -17,7 +17,7 @@
                 <a class="nav-link" href="/main">Messages</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user-messages/${}">My messages</a>
+                <a class="nav-link" href="/user-messages/${currentUserId}">My messages</a>
             </li>
             <#if isAdmin>
             <li class="nav-item">
