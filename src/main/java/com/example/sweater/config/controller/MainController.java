@@ -95,7 +95,7 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/user-messages/${user}")
+    @GetMapping("/user-messages/{user}")
     public String userMessages(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User user,
