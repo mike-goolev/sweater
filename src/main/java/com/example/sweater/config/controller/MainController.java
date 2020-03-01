@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -83,7 +82,7 @@ public class MainController {
         return "main";
     }
 
-    private void saveFile(@Valid Message message, @RequestParam("file") MultipartFile file) throws IOException {
+    public void saveFile(@Valid Message message, @RequestParam("file") MultipartFile file) throws IOException {
         if (file != null && !file.getOriginalFilename().isEmpty()) {
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
@@ -115,28 +114,28 @@ public class MainController {
         return "userMessages";
     }
 
-    @PostMapping("/user-messages/{user}")
-    public String updateMessage(
-            @AuthenticationPrincipal User currentUser,
-            @PathVariable Long user,
-            @RequestParam("id") Message message,
-            @RequestParam("text") String text,
-            @RequestParam("tag") String tag,
-            @RequestParam("file") MultipartFile file
-    ) throws IOException {
-        if (message.getAuthor().equals(currentUser)) {
-            if (!StringUtils.isEmpty(text)) {
-                message.setText(text);
-            }
-
-            if (!StringUtils.isEmpty(tag)) {
-                message.setTag(tag);
-            }
-
-            saveFile(message, file);
-
-            messageRepo.save(message);
-        }
-        return "redirect:/user-messages/" + user;
-    }
+//    @PostMapping("/user-messages/{user}") // move to separated controller
+//    public String updateMessage(
+//            @AuthenticationPrincipal User currentUser,
+//            @PathVariable Long user,
+//            @RequestParam("id") Message message,
+//            @RequestParam("text") String text,
+//            @RequestParam("tag") String tag,
+//            @RequestParam("file") MultipartFile file
+//    ) throws IOException {
+//        if (message.getAuthor().equals(currentUser)) {
+//            if (!StringUtils.isEmpty(text)) {
+//                message.setText(text);
+//            }
+//
+//            if (!StringUtils.isEmpty(tag)) {
+//                message.setTag(tag);
+//            }
+//
+//            saveFile(message, file);
+//
+//            messageRepo.save(message);
+//        }
+//        return "redirect:/user-messages/" + user;
+//    }
 }
