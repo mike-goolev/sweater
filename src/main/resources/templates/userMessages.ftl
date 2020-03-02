@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="card-title">Subscribtions</div>
                         <h3 class="card-text">
-                            <a href="/user/subscriptions/${userChannnnel.id}">${subscriptionsCount}</a>
+                            <a href="/user/subscriptions/${userChannel.id}">${subscriptionsCount}</a>
                         </h3>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <div class="card-title">Subscribers</div>
                         <h3 class="card-text">
-                            <a href="/user/subdscribers/${userChannnnel.id}">${subscribersCount}</a>
+                            <a href="/user/subdscribers/${userChannel.id}">${subscribersCount}</a>
                         </h3>
                     </div>
                 </div>
