@@ -108,34 +108,13 @@ public class MainController {
             ) {
         Set<Message> messages = user.getMessages();
 
+        model.addAttribute("userChannnnel", user);
+        model.addAttribute("subscribersCount", user.getSubscriptions().size());
+        model.addAttribute("subscriptionsCount", user.getSubscriptions().size());
+        model.addAttribute("isSubscriber", user.getSubscribers().contains(currentUser));
         model.addAttribute("messages", messages);
         model.addAttribute("message", message);
         model.addAttribute("isCurrentUser", currentUser.equals(user));
         return "userMessages";
     }
-
-//    @PostMapping("/user-messages/{user}") // move to separated controller
-//    public String updateMessage(
-//            @AuthenticationPrincipal User currentUser,
-//            @PathVariable Long user,
-//            @RequestParam("id") Message message,
-//            @RequestParam("text") String text,
-//            @RequestParam("tag") String tag,
-//            @RequestParam("file") MultipartFile file
-//    ) throws IOException {
-//        if (message.getAuthor().equals(currentUser)) {
-//            if (!StringUtils.isEmpty(text)) {
-//                message.setText(text);
-//            }
-//
-//            if (!StringUtils.isEmpty(tag)) {
-//                message.setTag(tag);
-//            }
-//
-//            saveFile(message, file);
-//
-//            messageRepo.save(message);
-//        }
-//        return "redirect:/user-messages/" + user;
-//    }
 }
